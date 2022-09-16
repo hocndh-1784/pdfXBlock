@@ -102,7 +102,7 @@ class PDFXBlock(XBlock):
 
         context = {
             'display_name': self.display_name,
-            'url': self.href,
+            'href': self.href,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url,
@@ -123,7 +123,7 @@ class PDFXBlock(XBlock):
 
         context = {
             'display_name': self.display_name,
-            'url': self.href,
+            'href': self.href,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url,
