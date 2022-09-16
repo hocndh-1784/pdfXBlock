@@ -44,7 +44,7 @@ class PDFXBlock(XBlock):
         help=_('This name appears in the horizontal navigation at the top of the page.')
     )
 
-    url = String(
+    href = String(
         display_name=_('PDF URL'),
         default=_('https://tutorial.math.lamar.edu/pdf/Trig_Cheat_Sheet.pdf'),
         scope=Scope.content,
@@ -82,7 +82,7 @@ class PDFXBlock(XBlock):
         """
 
         resource_content = pkg_resources.resource_string(__name__,
-                                                         resource_path)
+            resource_path)
         return resource_content.decode('utf-8')
 
     def render_template(self, path, context=None):
@@ -91,8 +91,8 @@ class PDFXBlock(XBlock):
         """
 
         return self.loader.render_django_template(os.path.join('static/html', path),
-                                                  context=Context(context or {}),
-                                                  i18n_service=self.runtime.service(self, 'i18n'))
+            context=Context(context or {}),
+            i18n_service=self.runtime.service(self, 'i18n'))
 
     def student_view(self, context=None):
         """
@@ -102,7 +102,7 @@ class PDFXBlock(XBlock):
 
         context = {
             'display_name': self.display_name,
-            'url': self.url,
+            'url': self.href,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url,
@@ -123,7 +123,7 @@ class PDFXBlock(XBlock):
 
         context = {
             'display_name': self.display_name,
-            'url': self.url,
+            'url': self.href,
             'allow_download': self.allow_download,
             'source_text': self.source_text,
             'source_url': self.source_url,
@@ -141,7 +141,7 @@ class PDFXBlock(XBlock):
         The saving handler.
         """
         self.display_name = data['display_name']
-        self.url = data['url']
+        self.href = data['href']
         self.allow_download = data['allow_download'] == 'True'  # Basic str to translation
         self.source_text = data['source_text']
         self.source_url = data['source_url']
