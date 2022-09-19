@@ -6,6 +6,9 @@
             {% trans "Không tìm thấy plugin hiển thị PDF trên trình duyệt này." %}</a>
         </p>
     </object>
+    <p id="warning_text" style="display:none">
+        {% trans "Không tìm thấy plugin hiển thị PDF trên trình duyệt này." %}</a>
+    </p>
     {% if allow_download or source_url != "" %}
     <ul>
         {% if allow_download %}
@@ -21,3 +24,12 @@
     </ul>
     {% endif %}
 </div>
+<script>
+    $(document).ready(function(){
+        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+            $("object").hide();
+            $("#warning_text").show();
+
+        }
+    }
+</script>
