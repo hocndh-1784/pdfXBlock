@@ -25,11 +25,23 @@
     {% endif %}
 </div>
 <script>
-    $(document).ready(function(){
-        if (userAgent.match(/iPad/i) || userAgent.match(/iPhone/i)) {
+    function is_iOS() {
+        return [
+            'iPad Simulator',
+            'iPhone Simulator',
+            'iPod Simulator',
+            'iPad',
+            'iPhone',
+            'iPod'
+        ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    }
+    $( window ).on("load", function (e) {
+        if (is_iOS()) {
             $("object").hide();
             $("#warning_text").show();
 
         }
-    }
+    })
 </script>
